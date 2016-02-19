@@ -1,0 +1,1813 @@
+
+
+
+
+window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"08e3846491","applicationID":"6240","transactionName":"IA4NFUENWg5dSk1cXQ4ETBRAB0Q=","queueTime":2,"applicationTime":206,"agent":""}
+(window.NREUM||(NREUM={})).loader_config={xpid:"Uw4DU0VVCgcA"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(){}function r(t){function e(t){return t&&t instanceof n?t:t?a(t,i,o):o()}function s(n,r,o){t&&t(n,r,o);for(var i=e(o),a=f(n),s=a.length,c=0;s>c;c++)a[c].apply(i,r);return i}function c(t,e){d[t]=f(t).concat(e)}function f(t){return d[t]||[]}function u(){return r(s)}var d={};return{on:c,emit:s,create:u,listeners:f,context:e,_events:d}}function o(){return new n}var i="nr@context",a=t("gos");e.exports=r()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&&console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(i.console=!0,-1!==n.indexOf("dev")&&(i.dev=!0),-1!==n.indexOf("nr_dev")&&(i.nrDev=!0))}catch(a){}i.nrDev&&r.on("internal-error",function(t){e(t.stack)}),i.dev&&r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&&(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:21,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,a){try{f?f-=1:r("err",[a||new UncaughtException(t,e,n)])}catch(c){try{r("ierr",[c,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof s?s.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=t("loader"),s=window.onerror,c=!1,f=0;a.features.err=!0,t(3),window.onerror=e;try{throw new Error}catch(u){"stack"in u&&(t(4),t(5),"addEventListener"in window&&t(1),a.xhrWrappable&&t(2),c=!0)}i.on("fn-start",function(){c&&(f+=1)}),i.on("fn-err",function(t,e,r){c&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){c&&!this.thrown&&f>0&&(f-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:5,2:8,3:3,4:7,5:6,6:22,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){for(var e=t;e&&!e.hasOwnProperty("addEventListener");)e=Object.getPrototypeOf(e);e&&r(e)}function r(t){a.inPlace(t,["addEventListener","removeEventListener"],"-",o)}function o(t){return t[1]}var i=t("ee").create(),a=t(1)(i),s=t("gos");e.exports=i,r(window),"getPrototypeOf"in Object?(n(document),n(XMLHttpRequest.prototype)):XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&r(XMLHttpRequest.prototype),i.on("addEventListener-start",function(t){if(t[1]){var e=t[1];if("function"==typeof e){var n=s(e,"nr@wrapped",function(){return a(e,"fn-",null,e.name||"anonymous")});this.wrapped=t[1]=n}else"function"==typeof e.handleEvent&&a.inPlace(e,["handleEvent"],"fn-")}}),i.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:23,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:23,ee:"QJf3ax"}],7:[function(t,e){function n(t,e,n){t[0]=i(t[0],"fn-",null,n)}function r(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=i(t[0],"fn-",this,n)}var o=t("ee").create(),i=t(1)(o);e.exports=o,i.inPlace(window,["setTimeout","setImmediate"],"setTimer-"),i.inPlace(window,["setInterval"],"setInterval-"),i.inPlace(window,["clearTimeout","clearImmediate"],"clearTimeout-"),o.on("setInterval-start",n),o.on("setTimer-start",r)},{1:23,ee:"QJf3ax"}],8:[function(t,e){function n(){f.inPlace(this,l,"fn-",o)}function r(t,e){f.inPlace(e,["onreadystatechange"],"fn-",o)}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").create(),s=t(1),c=t(2),f=c(a),u=c(s),d=window.XMLHttpRequest,l=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=a,window.XMLHttpRequest=function(t){var e=new d(t);try{a.emit("new-xhr",[e],e),e.hasOwnProperty("addEventListener")&&u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",n,!1)}catch(r){try{a.emit("internal-error",[r])}catch(i){}}return e},i(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{1:5,2:23,ee:"QJf3ax"}],9:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var o=0;u>o;o++)t.removeEventListener(f[o],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=this.lastSize||n(t);if(i&&(r.rxSize=i),this.sameOrigin){var s=t.getResponseHeader("X-NewRelic-App-Data");s&&(e.cat=s.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,c.emit("xhr-done",[t],t),a("xhr",[e,r,this.startTime])}}}function n(t){var e=t.responseType,n="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return r(n)}function r(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function o(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var i=t("loader");if(i.xhrWrappable){var a=t("handle"),s=t(2),c=t("ee"),f=["load","error","abort","timeout"],u=f.length,d=t(1),l=t(3),p=window.XMLHttpRequest;i.features.xhr=!0,t(5),t(4),c.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=e,n.ended=!1,n.xhrGuids={},n.lastSize=0,l&&(l>34||10>l)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),c.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),c.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),c.on("send-xhr-start",function(t,e){var n=this.metrics,o=t[0],i=this;if(n&&o){var a=r(o);a&&(n.txSize=a)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{c.emit("internal-error",[n])}catch(r){}}};for(var s=0;u>s;s++)e.addEventListener(f[s],this.listener,!1)}),c.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),c.on("xhr-load-added",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),c.on("xhr-load-removed",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),c.on("addEventListener-end",function(t,e){e instanceof p&&"load"===t[0]&&c.emit("xhr-load-added",[t[1],t[2]],e)}),c.on("removeEventListener-end",function(t,e){e instanceof p&&"load"===t[0]&&c.emit("xhr-load-removed",[t[1],t[2]],e)}),c.on("fn-start",function(t,e,n){e instanceof p&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),c.on("fn-end",function(t,e){this.xhrCbStart&&c.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:10,3:12,4:8,5:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],10:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],11:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:21,2:22,handle:"D5DuLP"}],12:[function(t,e){var n=0,r=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);r&&(n=+r[1]),e.exports=n},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):void(r.q&&(r.q[t]||(r.q[t]=[]),r.q[t].push(e)))}var r=t("ee").create();e.exports=n,n.ee=r,r.q={}},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){if(!h++){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(d,function(e,n){t[e]||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document;t(2);var u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-852.min.js"},l=window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent),p=e.exports={offset:i(),origin:u,features:{},xhrWrappable:l};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()]);var h=0},{1:21,2:11,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],21:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],22:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],23:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@original",a=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,c;try{i=this,n=o(arguments),s="function"==typeof r?r(n,i):r||{}}catch(u){d([u,"",[n,i,a],s])}f(e+"start",[n,i,a],s);try{return c=t.apply(i,n)}catch(l){throw f(e+"err",[n,i,l],s),l}finally{f(e+"end",[n,i,c],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=t,u(t,nrWrapper),nrWrapper)}function c(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!s){s=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}s=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=c,e.flag=i,e}},{1:22,ee:"QJf3ax"}]},{},["G9z0Bl",4,9]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico (mi_putamelena) on We Heart It
+
+
+
+
+
+
+
+
+
+
+// utf8 = 
+
+(function () {
+
+  var padding = function (string, length, fill) {
+    return Array(length - String(string).length + 1).join(fill || '0') + string;
+  }
+
+  var currentVisitDate = function () {
+    var date = new Date
+    return date.getFullYear() + '-' + padding(date.getMonth() + 1, 2)  + '-' + padding(date.getDate(), 2)
+  }
+
+  var pageData = function (route) {
+    var data = { type: null, id: null }
+
+    if (route.controller === "home" && route.action == "entry") data = { type: 'entry', id: '' }
+    else if (route.controller === "user_pages" && route.action === "dashboard") data = { type: "dashboard", id: null }
+    else if (route.controller === "inspirations" && route.action === "show") data = { type: 'inspiration', id: '' }
+    else if (route.controller === "home" && route.action === "recent") data = { type: "recent", id: null }
+    else if (route.controller === "home" && route.action === "user_set") data = { type: 'collection', id: '' }
+    else if (route.controller === "home" && route.action === "tag") data = { type: 'tag', id: '' }
+    else if (route.controller === "home" && route.action === "user" && route.hide_sets === true) data = { type: 'user_hearts', id: '28501050' }
+    else if (route.controller === "home" && route.action === "user") data = { type: 'user_profile', id: '28501050' }
+    else if (route.controller === "home" && route.action === "user_sets") data = { type: "user_sets", id: '28501050' }
+    else if (route.controller === "home" && route.action === "user_contacts") data = { type: "user_contacts", id: '28501050' }
+    else if (route.controller === "home" && route.action === "user_fans") data = { type: "user_fans", id: '28501050' }
+    else data = { type: 'other', id: null }
+
+    return data
+  }
+
+  var DataLayerEvent = function () {
+    this.values = {}
+  }
+
+  var convert = function (value, convertFunction) {
+    if (value !== undefined && value !== null) value = convertFunction(value)
+    return value
+  }
+
+  var add = function (convertFunction) {
+    return function (key, value) {
+      this.values[key] = convert(value, convertFunction)
+    }
+  }
+
+  DataLayerEvent.prototype.addString = add(String)
+  DataLayerEvent.prototype.addNumber = add(Number)
+  DataLayerEvent.prototype.addBoolean = add(Boolean)
+
+  var addIf = function (convertFunction) {
+    return function (key, value, condition) {
+      if (arguments.length === 2) condition = value
+      this.values[key] = convert(condition ? value : null, convertFunction)
+    }
+  }
+
+  DataLayerEvent.prototype.addStringIf = addIf(String)
+  DataLayerEvent.prototype.addNumberIf = addIf(Number)
+  DataLayerEvent.prototype.addBooleanIf = addIf(Boolean)
+
+  DataLayerEvent.prototype.push = function () {
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push(this.values)
+  }
+
+  window.whiConfig = {
+
+    adsNativeZID : 'DLP_fqCTbTXNuxJUKwHCq0eLx3mFNNPllozB9gII',
+    authenticated : 'no',
+    disable_anonymous_registration : false,
+    user_authenticated : false,
+    experiment : null,
+    current_locale : "",
+    new_language_notification : false,
+    entry_exists : false,
+    mobile_app : false,
+    mobile_site : false,
+    dev_mode : false,
+    request_type : "GET",
+    facebook : { appId: '200368456664008', api_version: 'v2.0', user_token : "" },
+    pink_snake_loader_path: 'http://assets.whicdn.com/assets/pink_snake_loader-e10a468faf5a07994cefa437d6185fc4.gif',
+    pageData: pageData(JSON.parse('{"action":"user","controller":"home","format":"html","username":"mi_putamelena"}')),
+  }
+
+  var dlEvent = new DataLayerEvent()
+  dlEvent.addString('event', 'datalayer-initialized')
+  dlEvent.addString('locale', window.whiConfig.current_locale)
+  dlEvent.addString('visitorId', window.whiConfig.user_id)
+  dlEvent.addString('visitorLoginState', whiConfig.user_authenticated ? 'loggedin' : 'anonymous')
+  dlEvent.addString('currentVisitStartDate', currentVisitDate())
+  dlEvent.addString('sessionId', 'b4cbb40e9f7f15a3bd5aa5387382a82b')
+  dlEvent.addString('pageType', window.whiConfig.pageData.type)
+  dlEvent.addStringIf('pageTypeId', window.whiConfig.pageData.id, window.whiConfig.pageData.type !== 'other')
+  dlEvent.addString('contentLocale', window.whiConfig.current_locale)
+  dlEvent.addStringIf('sessionSource', '', false)
+  dlEvent.addStringIf('sessionMedium', '', false)
+  dlEvent.addStringIf('sessionCampaign', '', false)
+  dlEvent.addStringIf('sessionOriginalReferrer', '', true)
+
+  dlEvent.push()
+}())
+
+!function(e,t){var i=[/^\/about/i,/^\/join/i,/^\/advertise/i,/^\/current-version/i,/^\/heart-button/i,/^\/heart-it\//i,/^\/bookmarklet/i,/^\/facebook-timeline/i,/^\/contact/i,/^\/health-check/i,/^\/internal-error/i,/^\/settings\//i,/^\/widget\//i,/^\/fogot_password/i,/^\/admin\//i,/^\/valentinesremix/i,/^\/help\/prevention-resources/i,/^\/events\/.+/i,/^\/.+\/leaderboard\/2014/i,/^\/activations\//i,/^\/login/i],o="weheartit_app_redirected",n=/weheartit\.com/i,a="whi";if((!e.whiConfig||e.whiConfig.mobile_site)&&!(i.some(function(t){return t.test(e.location.pathname)})||n.test(t.referrer)&&new RegExp(o+"=","i").test(t.cookie))){var r=function(){t.cookie=o+"=yes;path=/;domain=.weheartit.com"},s=function(){var e=t.location.pathname,i=e;if(/^\/entry/.test(e))i=e.replace(/^\//,"");else if(t.getElementsByClassName("user-header").length||t.getElementsByClassName("user-info").length)i="user"+e;else if(/^\/postcard/.test(e)){var o=e.split("/"),n=o[o.length-1];i="shared_postcard?token="+n,t.location.search&&(i+="&"+t.location.search.substring(1))}else i=t.location.host+t.location.pathname+t.location.search;return i},c=t.createElement("iframe");c.style.border="none",c.style.width="1px",c.style.height="1px",c.src=a+"://"+s();var l=setTimeout(function(){r()},900);c.onload=function(){clearTimeout(l),r()},t.documentElement.appendChild(c),setTimeout(function(){c.parentNode.removeChild(c)},1e3)}}(window,document);
+
+
+
+
+
+
+
+
+
+
+
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-MNKX8B');
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+        
+      
+
+
+
+        
+      
+
+
+
+
+
+
+
+
+
+
+Home
+ 
+
+
+
+ Discover
+ 
+
+
+
+ Inspirations
+ 
+
+ 
+
+
+
+
+
+
+  
+ 
+ 
+
+
+
+          Join
+
+
+Using Facebook
+ 
+Using Twitter
+ 
+Using Google
+ 
+Using Email
+ 
+
+
+
+
+
+          Log in
+          
+
+Using Facebook
+ 
+Using Twitter
+ 
+Using Google
+ 
+Using Email
+ 
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+connection lost:
+try refreshing to keep hearting
+
+
+
+
+
+
+
+
+Language
+
+
+
+
+English
+Deutsch
+
+Espaol
+Suomi
+Franais
+Magyar
+Bahasa Indonesia
+
+
+
+
+Italiano
+
+
+Norsk
+Nederlands
+Polski
+Portugus (BR)
+Romn
+
+
+
+
+
+Svenska
+
+Trke
+
+
+
+
+
+
+
+
+
+
+
+
+Add Images
+
+
+
+
+
+
+            Add From URL
+ 
+
+
+
+            Upload Image
+ 
+
+
+
+Get the Heart Button
+Add button to my site
+
+
+
+
+
+
+
+
+
+
+Drag to reposition cover
+
+
+
+
+ 
+
+
+
+UnPutoMarlboroTxico
+
+Haba una vez un tigre tan dulce y tierno que en vez de crecer con amor en su alma creci con un hueco en ella pero es feliz,siempre hay razones para sonrer :3
+
+
+
+
+
+Follow
+
+Ecuador
+/mi_putamelena
+
+
+
+
+
+followers
+ 
+
+
+following
+ 
+
+
+collections
+ 
+
+
+hearts
+ 
+
+
+canvas
+ 
+
+
+Now available in your language!
+Use in your language!
+  
+  Go back to English
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Fucking Disaster // I  my lover
+        30
+
+Follow
+
+
+
+
+
+
+
+
+
+        Cara Delevingne  
+        15
+
+Follow
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+15 days ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+18 days ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+about 1 month ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+about 1 month ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+about 1 month ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+about 1 month ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+4 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+4 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+4 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+5 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+5 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+5 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+5 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+5 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+5 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+5 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+5 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+5 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+5 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UnPutoMarlboroTxico
+
+5 months ago
+
+
+        
+      
+
+
+
+Follow
+
+ 
+
+
+
+
+
+
+
+
+ 
+              Add to collections
+            
+
+ 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+next 
+
+
+ 
+
+
+
+
+
+Is this your first heart?
+
+Sign in with Facebook or Twitter to start your gallery.
+
+Sign in with Facebook
+Sign in with Twitter
+
+Don't have Twitter or Facebook? Skip this step!
+
+
+Have a We Heart It account?
+Log in now
+
+
+
+ 
+
+
+
+Scroll to Top
+ 
+page
+
+
+
+
+
+
+
+
+Cancel
+OK
+
+
+
+
+Follow user
+Unfollow user
+Unfollow collections
+Cancel
+
+
+You have now unfollowed 
+OK
+Refresh
+
+
+
+Unfollow all
+Cancel
+
+
+Unfollow collection
+Unfollow collections
+Unfollow user
+Are you sure you want to unfollow the collection "" by  (@)?
+Are you sure you want to unfollow all collections for this entry by  (@)?
+Are you sure you want to unfollow all hearts and collections from  (@)?
+Cancel
+Unfollow
+
+
+
+
+
+
+
+
+
+
+ 
+Download our app for iOS and Android!
+ 
+
+
+
+
+
+About the site
+Need help? Read this
+Get the Heart Button
+Contact the Support Team
+We Heart It for Business
+
+
+
+
+Terms of Service
+Privacy Policy
+California Privacy Rights
+Links monetized by VigLink
+Claim Copyright
+
+
+
+ All images are copyrighted by their respective authors.
+
+
+
+
+Languages:
+
+
+
+English
+Deutsch
+
+Espaol
+Suomi
+Franais
+Magyar
+Bahasa Indonesia
+
+
+
+
+Italiano
+
+
+Norsk
+Nederlands
+Polski
+Portugus (BR)
+Romn
+
+
+
+
+
+Svenska
+
+Trke
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+
+
+
+_qevents.push({
+  qacct:"p-45nh8QKbsf2Xk"
+});
+
+
+
+
+
+
+
+
+
+  var vglnk = { key: 'df797c6edb7c14f9b66bc241a31bf453' };
+
+  (function(d, t) {
+    var s = d.createElement(t); s.type = 'text/javascript'; s.async = true;
+    s.src = '//cdn.viglink.com/api/vglnk.js';
+    var r = d.getElementsByTagName(t)[0]; r.parentNode.insertBefore(s, r);
+  }(document, 'script'));
+
+
+
+
+
+  I18n.defaultLocale = "en";
+  I18n.locale = "en";
+  I18n.fallbacks = true;
+
+
+var WeHeartIt = require('/modules/whi')
+new WeHeartIt({
+  views : ["settings_heartitbutton", "inspirations/inspirations", "user_set", "registration/registration", "registration/login", "registration/heart_images", "registration/email_signup", "registration/join_tracker", "registration/follow_people", "registration/testimonials", "registration/sign_up", "facepile_box", "postcard", "follow_button", "floating_window", "heart_button_container", "share_modal", "email_bounced", "openx_ads", "add_favorite_keyword", "user_account/edit_notices", "user_account/link_account", "user_account/find_friends", "user_account/email_suggestion", "user_account/facebook_timeline", "user_account/follow_me", "widgets", "block_warning", "catalog/catalog", "catalog/vimeo_thumbs", "new_account/new_confirmation", "new_account/new_account", "inbox", "follow_collection_button", "dropdown", "shared_postcards/shared_postcard_sign_in", "shared_postcards/shared_postcard_sign_up", "modal", "adsnative_ads", "heart_button", "dummy_ads", "dashboard/box_contacts", "dashboard/userFilter", "prompts/app_promo_ad", "show_admin", "static/app", "static/popular", "static/postcards_gallery", "static/left_share_buttons", "static/download_heart_button", "static/facebook_timeline", "static/contact", "static/goodies", "static/postcards", "navbar/topbar_touches", "navbar/navbar", "navbar/notifications", "actions/add_image", "actions/new_entry_form_sign_in", "actions/too_many_tags", "actions/new_entry_form", "actions/heart_success", "user_profile/profile", "user_profile/profile_tour", "user_profile/cover_images", "user_profile/entry_set_carousel", "interstitial", "banner_join", "sidebar", "activation", "postcard_button", "modals/collections_modal", "modals/create_new_collection_modal", "modals/add_to_collection_modal", "getting_started", "notice", "entry/add_to_collection", "entry/entry_ftue", "entry/box_tagged_with", "entry/create_entry_set", "entry/entry_group", "entry/share_buttons", "entry/youtube_autoplay", "entry/report_button", "entry/entry", "facebook_widget", "valentines_remix"],
+  modules : [
+    'notifications',
+    'search',
+    'lightbox',
+    'hover_flicker_fix',
+    'entry_frame_buster',
+    'infinite_scroll',
+    'prevent_double_submission',
+    'global_events',
+    'registration_intercept',
+    'popup_message'
+  ]
+})
+
+
+     (function() {
+         var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
+         mf.src = "//cdn.mouseflow.com/projects/9a1c7b3b-3efb-4253-8503-73b75be81fa9.js";
+         document.getElementsByTagName("head")[0].appendChild(mf);
+     })();
+  
+
+  jQuery(function($){
+    // English (Template)
+jQuery.timeago.settings.strings = {
+  prefixAgo: null,
+  prefixFromNow: null,
+  suffixAgo: "ago",
+  suffixFromNow: "from now",
+  seconds: "less than a minute",
+  minute: "about a minute",
+  minutes: "%d minutes",
+  hour: "about an hour",
+  hours: "about %d hours",
+  day: "a day",
+  days: "%d days",
+  month: "about a month",
+  months: "%d months",
+  year: "about a year",
+  years: "%d years",
+  wordSeparator: " ",
+  numbers: []
+};
+
+
+    $(document).ready(function() {
+      $("abbr.timeago").timeago();
+      // Close notices
+      $('.closable').append('<span class="close">close</span>')
+                    .find('.close').click(function(){ $(this).parent().slideUp(); });
+    });
+  })
+
+
+//<![CDATA[
+jQuery.ajax({url: '//platform.twitter.com/widgets.js', dataType: 'script', cache: true, success: function() {
+    // Google analytics events for tracking tweets
+    twttr.events.bind('tweet', function(event) {
+      if (event) {
+        var targetUrl;
+        if (event.target && event.target.nodeName == 'IFRAME') {
+          targetUrl = extractParamFromUri(event.target.src, 'url');
+        }
+        $.publish('trackSocial',['twitter','tweet',targetUrl])
+      }
+    });
+    // Google analytics events for tracking follows
+    twttr.events.bind('follow', function(event) {
+      var followed_screen_name = event.data.screen_name;
+      $.publish('trackSocial',['twitter','follow',followed_screen_name])
+    });
+}});
+//]]>
+
+
+//<![CDATA[
+
+  	(function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-v1.6.9.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"init data first addListener removeListener setIdentity logout track link sendSMS referrals credits creditHistory applyCode validateCode getCode redeem banner closeBanner".split(" "), 0);
+
+    branch.init('key_live_kjdTbXKTeqo2bSs985fLRcfgAwgm81ze');
+    branch.banner({
+      icon: 'http://assets.whicdn.com/assets/weheartit_logo_square.png',
+      title: 'We Heart It App <span></span>',
+      description: 'Discover and share the most beautiful images from around the world',
+      downloadAppButtonText: 'GET',
+      sendLinkText: 'Send link',
+      openAppButtonText: 'Open',
+      phonePreviewText: '555 123 4567',
+      position: "bottom",
+      forgetHide: 10,
+      customCSS:'#branch-banner { bottom: 0; z-index: 6; } #branch-banner .content{border: 0; background-color:rgb(44,45,47);color:white;} #branch-banner .icon img { background: white; border-radius: 10px; margin-right: 10px; } #branch-banner .content .right { height: 64px; } #branch-banner-close { margin-right: 10px; } #branch-banner .title{ margin-bottom:4px;} #branch-banner .description{ color: #ccc } #branch-banner .title span { color: gold; display: block; } #branch-banner-close:hover { color: white; } #branch-sms-send { background: #ff6699; color: white; font-weight: 600; border: 1px solid #f69; font-family: Helvetica, arial, sans-serif; } #branch-sms-send:hover { background: white; color: #f69; border: 1px solid #4a4a4a; } #branch-sms-phone { font-family: Helvetica, arial, sans-serif; } #branch-mobile-action { color: white !important; border: 1px solid white; padding: 6px 8px; border-radius: 4px; font-size: 12px; font-family: Helvetica, arial, sans-serif; font-weight: 600; } @media screen and (max-width: 500px) { #branch-banner-close { display: none; } #branch-banner .icon img {width: 34px; height: 34px; border-radius: 4px; } #branch-banner .description {display:none;} #branch-banner .content .left { height: 33px; } #branch-banner .content { height: 46px; } #branch-banner .content .right { padding-top: 1px; margin-top: -2px } }'
+    }, {
+      feature: "App Banner",
+      campaign: "growth",
+      channel: "Web"
+    });
+
+//]]>
+
+

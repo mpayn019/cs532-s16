@@ -1,0 +1,854 @@
+
+
+
+
+Masahiro Sakai(@masahiro_sakai) - Twilog
+
+
+
+
+
+
+
+body {background:#709397 url(http://abs.twimg.com/images/themes/theme6/bg.gif) no-repeat fixed 0 0; color:#333;}
+a,a:hover {color:#116300;}
+.side-list-icon,.nav-link a,.cal-nav a {background-color:#116300 !important;}
+.tl-del a,.tl-del a:hover,.tl-name a:hover strong {color:#116300 !important;}
+
+
+
+
+
+
+$(function(){
+
+	$('a[href=#pagetop]').click(function(){
+		$('html, body').animate({scrollTop:0}, 'fast');
+		return false;
+	});
+	$("#user-search-form").submit(function(){
+		user_search();
+		return false;
+	});
+	$("#uf").submit(function(){ $("#ub").attr("disabled","disabled"); });
+
+	add_twbutton();
+	$("#ub").removeAttr("disabled");
+
+	c_id = "";
+	c_str = document.cookie+";";
+	start = c_str.indexOf("update_id=");
+	if (start != -1){
+		end = c_str.indexOf(";", start);
+		c_id = c_str.substring(start+10, end);
+		if(c_id=="masahiro_sakai") return;
+	}
+
+	exp=new Date(); exp.setTime(exp.getTime()+1000*60*5);
+	document.cookie = "update_id=masahiro_sakai; expires=" + exp.toGMTString();
+
+	url = "http://twilog.org/check-update.rb?c=5901382&l=699751445302611968&s=2627628";
+	$.ajax({
+		dataType : "jsonp",
+		url: url,
+		success: function(data) {
+			if(data.tw<0) return;
+
+			if(data.tw==0) {
+				$("#ub").attr("disabled","disabled").css("cursor","default").val("");
+				return;
+			}
+			$("#info").slideDown();
+		}
+	});
+	
+
+
+});
+
+function user_search(){
+	var user_id = $("#user-search-form input[type=text]").val();
+
+	user_id = user_id.replace(/^[ ]+|[ ]+$/g, "");
+	if(user_id=="") {
+		alert("Twitter ID");
+		return;
+	}else if(!user_id.match(/^@?[a-zA-Z0-9_]+$/)) {
+		alert("Twitter ID");
+		return;
+	}
+
+	user_id = user_id.replace("@","");
+	location.href = "http://twilog.org/"+user_id;
+}
+
+
+function word_search(){
+	var param = {}
+	param["word"] = encodeURIComponent($("#wsearch input[name='word']").val());
+	param["ao"] = ($("#ao-a").is(":checked")) ? "a" : "o";
+
+	var ar = [];
+	for(k in param){
+		if(param[k]=="") continue;
+		ar.push(k + "=" + param[k]);
+	}
+	location.href = "http://twilog.org/masahiro_sakai/search?" + ar.join("&");
+}
+
+
+var srcbtn_date = false;
+
+function show_srcbtn(date){
+
+	if(!srcbtn_date){
+		var str = "<p class=\"mb5\"></p>";
+		str += "<p class=\"bt-src bt-common\"><a href=\"javascript:show_srcbox('')\">divp</a></p>";
+		str += "<p class=\"bt-src bt-common\"><a href=\"javascript:show_srcbox('ul')\">ulli</a></p>";
+		str += "<p class=\"bt-src bt-common\"><a href=\"javascript:show_srcbox('p')\">p</a></p>";
+		$("#s"+date).html(str).fadeIn("fast"); srcbtn_date = date;;
+	} else {
+		if(srcbtn_date==date){
+			$("#s"+date).fadeOut("fast"); srcbtn_date = false;
+		} else {
+			$("#s"+srcbtn_date).fadeOut("fast"); $("#s"+date).fadeIn("fast"); srcbtn_date = date;
+		}
+	}
+
+}
+
+function show_srcbox(type){
+
+	var date = srcbtn_date;
+	$("#s"+date).fadeOut("fast"); srcbtn_date = false;
+
+	$("#source-box").fadeOut("fast",function(){
+		$("#source-box").html("<img src='http://twilog.org/img-dir/r/ajax-loader.gif' class='mt50'>")
+	    wx = $(window).scrollLeft() + Math.floor(($(window).width() - $('#source-box').outerWidth()) / 2);
+	    wy = $(window).scrollTop() + Math.floor(($(window).height() - $('#source-box').outerHeight()) / 2);
+	    $("#source-box").css({ "top": wy, "left": wx }).fadeIn("fast");
+
+		$.ajax({
+			url : "http://twilog.org/source.rb?word=" ,
+			data : { "id":"masahiro_sakai", "date":date, "cate":"", "param":"desc-", "type":type },
+			success : get_source_success,
+			error : function(){
+				alert("Error!!"); close_srcbox();
+			}
+
+		});
+	});
+}
+
+function get_source_success(src){ $("#source-box").html(src); }
+function close_srcbox(){ $("#source-box").fadeOut("fast"); }
+
+function add_twbutton(){
+	$("article.tl-tweet").each(function(){
+		var id = $(this).attr("id").substr(2);
+
+		var p_elem = $("<p/>").attr("class","tw-buttons");
+		var a_elem = $("<a/>").html("&nbsp;").attr({"href":"javascript:void(0);","class":"tb-rep","title":""}).click({url:"https://twitter.com/intent/tweet?in_reply_to="+id},open_window);
+		$(p_elem).append(a_elem);
+		a_elem = $("<a/>").html("&nbsp;").attr({"href":"javascript:void(0);","class":"tb-rt","title":""}).click({url:"https://twitter.com/intent/retweet?tweet_id="+id},open_window);
+		$(p_elem).append(a_elem);
+		a_elem = $("<a/>").html("&nbsp;").attr({"href":"javascript:void(0);","class":"tb-fav","title":""}).click({url:"https://twitter.com/intent/favorite?tweet_id="+id},open_window);
+		$(p_elem).append(a_elem);
+		$(this).append(p_elem);
+	});
+}
+
+
+function open_window(e){
+	var ww=550; var hh=520;
+    var x = (screen.width - ww) / 2; var y = (screen.height - hh) / 2;
+    open(e.data.url, "childWindow", "width="+ww+",height="+hh+",left="+x+",top="+y);
+}
+
+
+
+
+
+
+
+
+Twilog
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Twilog 
+@masahiro_sakai
+
+
+
+
+
+
+Masahiro Sakai@masahiro_sakai
+
+854
+1,070
+138
+
+
+Kawasaki, Japan
+http://twilog.org/masahiro_sakai/
+Haskellerhttp://msakai.jp/d/  http://google.com/+MasahiroSakai  Ingress()msakai
+
+
+
+
+
+
+Stats
+Twitter3,2072007/05/09
+12,3923.8/
+
+
+
+
+
+ :
+
+
+
+
+
+
+
+ :
+
+
+Reply
+Mention
+RT
+RT
+
+
+
+
+
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+
+
+
+@masahiro_sakai
+
+
+
+
+20160217()4 tweetssource
+
+
+
+
+14
+
+Masahiro Sakai@masahiro_sakai
+The Bug That Ate Thursday | bit-player http://bit-player.org/2016/the-bug-tat-ate-thursday MathJax https://plus.google.com/+MasahiroSakaiposts/Uw5ZexuDFVg https://pic.twitter.com/SUFa1i86B3
+
+posted at 09:25:19
+
+
+14
+
+Masahiro Sakai@masahiro_sakai
+SMT-COMP 2016  https://sourceforge.net/p/smtcomp/mailan/message/34855006/  https://plus.google.com/+MasahiroSakaiposts/HS2EEPRyZUt
+posted at 09:25:14
+
+
+14
+
+Masahiro Sakai@masahiro_sakai
+@masahiro_sakai DistBeliefTensorflow
+posted at 09:13:43
+
+
+23
+
+Akiko Murakami/@akikom
+  https://pic.twitter.com/ET6omVtNBjRetweeted by Masahiro Sakai
+retweeted at 00:04:15
+
+
+
+20160216()7 tweetssource
+
+
+
+
+23
+
+@okasanman
+ 94%Thttp://www.mirror.co.uk/news/technolog-science/science/doctors-battling-stop-cancer-hail-7377474 https://pic.twitter.com/JG5jNcL0OoRetweeted by Masahiro Sakai
+retweeted at 23:57:47
+
+
+216
+
+ruicc@ruicc
+ Stack traces in GHCi, coming in GHC 8.0.1  Simon Marlow http://htn.to/ac95MjLMRetweeted by Masahiro Sakai
+retweeted at 22:17:08
+
+
+216
+
+Masahiro Sakai@masahiro_sakai
+@masahiro_sakai NIP 2015  NIPS 2015
+posted at 21:38:51
+
+
+216
+
+V@voluntas
+ Retweeted by Masahiro Sakai
+retweeted at 12:09:53
+
+
+216
+
+Masahiro Sakai@masahiro_sakai
+NIP2015  Jeff Dean  Large-Scale Distributed Systems for Training Neural Networks  https://plus.google.com/+MasahiroSakaiposts/8MnhFBToQyd
+posted at 09:02:47
+
+
+216
+
+ @hillbig
+ binary netchainermnist https://github.com/hillbig/binarynet http://arxiv.org/abs/1602.02830Retweeted by Masahiro Sakai
+retweeted at 08:26:57
+
+
+216
+
+Mamoru Komachi@mamoruk
+ PFN2000 http://toyokeizai.net/articles/-/10504Retweeted by Masahiro Sakai
+retweeted at 08:20:19
+
+
+
+20160215()2 tweetssource
+
+
+
+
+215
+
+Masahiro Sakai@masahiro_sakai
+Fuzzy Maximum Satisfiability http://arxiv.org/abs/1602.02211  ukasiewicz logic MaxSAT DLRs, MILP, WCSP https://plus.google.com/+MasahiroSakaiposts/VBeMzNaQJFS
+posted at 09:02:02
+
+
+215
+
+Masahiro Sakai@masahiro_sakai
+bookmarked: Complete Problems of Propositional Logic for the Exponential Hierarchy: (9 Feb 2016)Large complexi... http://bit.ly/1PxebWE
+posted at 01:42:22
+
+
+
+20160214()3 tweetssource
+
+
+
+
+214
+
+Masahiro Sakai@masahiro_sakai
+bookmarked: Applying UCT to Boolean Satisfiability: In Theory and Applications of Satisfiability Testing - SAT... http://bit.ly/1obEkkE
+posted at 13:25:36
+
+
+214
+
+@inr_7
+ CGPTQ() https://pic.twitter.com/wXdeH8PV7eRetweeted by Masahiro Sakai
+retweeted at 10:22:55
+
+
+214
+
+TM@tmaehara
+ 16  https://dl.dropboxusercontent.com/u/109915284/AAI2016.txtRetweeted by Masahiro Sakai
+retweeted at 10:19:12
+
+
+
+20160213()7 tweetssource
+
+
+
+
+213
+
+nico_shindannin@nico_shindannin
+  https://deadlockempire.github.io/Retweeted by Masahiro Sakai
+retweeted at 22:46:43
+
+
+213
+
+Masahiro Sakai@masahiro_sakai
+bookmarked: Monte-Carlo Style UCT Search for Boolean Satisfiability: In AI*IA 2011: Artificial Intelligence Ar... http://bit.ly/1o8d5Yd
+posted at 11:30:13
+
+
+213
+
+TOKUNAGA Hiroyuki@tkng
+ BinaryNet http://tkng.org/b/2016/02/12/bnarynet-and-binarized-neural-network/Retweeted by Masahiro Sakai
+retweeted at 11:16:09
+
+
+213
+
+Masahiro Sakai@masahiro_sakai
+
+posted at 10:54:34
+
+
+213
+
+()@seagull_kamome
+ 10TRetweeted by Masahiro Sakai
+retweeted at 10:26:20
+
+
+213
+
+()@seagull_kamome
+ F,T,N,HSEPGQARetweeted by Masahiro Sakai
+retweeted at 10:26:15
+
+
+213
+
+()@seagull_kamome
+ FTRetweeted by Masahiro Sakai
+retweeted at 10:26:11
+
+
+
+20160212()1 tweetsource
+
+
+
+
+212
+
+@xx@_marony
+ Retweeted by Masahiro Sakai
+retweeted at 09:12:19
+
+
+
+20160211()13 tweetssource
+
+
+
+
+211
+
+Masahiro Sakai@masahiro_sakai
+[MM]  3 http://goo.gl/2ps8xz
+posted at 22:25:00
+
+
+211
+
+Masahiro Sakai@masahiro_sakai
+[MM]  2 http://goo.gl/GZ6QmC
+posted at 22:24:30
+
+
+211
+
+Masahiro Sakai@masahiro_sakai
+[MM]  1 http://goo.gl/34BWbC
+posted at 22:23:09
+
+
+211
+
+Masahiro Sakai@masahiro_sakai
+[MM]  1 http://goo.gl/4IvIjU
+posted at 22:18:27
+
+
+211
+
+Takuo WATANABE@wtakuo
+ Franz LispCommon-LispRetweeted by Masahiro Sakai
+retweeted at 21:51:35
+
+
+211
+
+Toshihiro Takada@takadat
+ makefilelisztGoslingdisplay.cStallmanhttps://twitter.com/masahiro_sakaistatus/697422114622574593Retweeted by Masahiro Sakai
+retweeted at 21:47:49
+
+
+211
+
+Yuji Yamamoto: @igrep
+ Xterm.js is a full xterm clone, written in JavaScript. / GitHub - sourcelair/xterm.js: xterm, in the browser http://htn.to/bug2n6Retweeted by Masahiro Sakai
+retweeted at 12:33:34
+
+
+211
+
+Masahiro Sakai@masahiro_sakai
+@masahiro_sakai Recent "New type of ($) operator in GHC 8.0 is problematic" thread got me to notice the changes, and I was really surprised!
+posted at 12:32:53
+
+
+211
+
+Masahiro Sakai@masahiro_sakai
+@masahiro_sakai Because of that, I haven't notice the removal of "left-to-right impredicative instantiation" and introduction of ($) magic.
+posted at 12:24:19
+
+
+211
+
+Masahiro Sakai@masahiro_sakai
+@masahiro_sakai GHC-7.x still type checks if we replace ($$) with ($), because GHC-7.x assigns a magical type to ($) behind the curtain.
+posted at 12:21:36
+
+
+211
+
+Masahiro Sakai@masahiro_sakai
+@masahiro_sakai But GHC-7.x removed the feature.
+posted at 12:13:41
+
+
+211
+
+Masahiro Sakai@masahiro_sakai
+@masahiro_sakai It allows type instantiation of ($$) based on the type of 1st argument (runST) and use the info to check the type of 2nd arg
+posted at 12:12:30
+
+
+211
+
+Masahiro Sakai@masahiro_sakai
+@masahiro_sakai The correct answer is GHC-6.12.3. GHC-6.8 introduced "left-to-right impredicative instantiation".
+posted at 12:12:08
+
+
+
+20160210()6 tweetssource
+
+
+
+
+210
+
+George Makrydakis@irrequietus
+ Hagino's CPL, original impl of his PhD thesis! Thanks to the prof. himself, @masahiro_sakai and @mietek https://twitter.com/masahiro_sakaistatus/697417239230676992 #programmingRetweeted by Masahiro Sakai
+retweeted at 23:25:01
+
+
+210
+
+Masahiro Sakai@masahiro_sakai
+CPL http://web.sfc.keio.ac.jp/~hagino/cpl.tgz   Franz Lisp + C  UI(?)
+posted at 23:09:24
+
+
+210
+
+Masahiro Sakai@masahiro_sakai
+@mietek @irrequietus Prof. Hagino has uploaded the original implementation of CPL to http://web.sfc.keio.ac.jp/~hagino/cpl.tgz . Yay!
+posted at 22:50:01
+
+
+210
+
+()@_darger
+  https://pic.twitter.com/bHgABdKuHzRetweeted by Masahiro Sakai
+retweeted at 20:25:44
+
+
+210
+
+Masahiro Sakai@masahiro_sakai
+@masahiro_sakai  
+posted at 12:32:20
+
+
+210
+
+ANA@anayuko
+ SF 20164952911200 https://pic.twitter.com/9yJWyGp1clRetweeted by Masahiro Sakai
+retweeted at 00:44:50
+
+
+
+20160209()7 tweetssource
+
+
+
+
+29
+
+Masahiro Sakai@masahiro_sakai
+@mietek @irrequietus Okay, I'll ask Prof. Hagino about that.
+posted at 09:27:41
+
+
+29
+
+Masahiro Sakai@masahiro_sakai
+bookmarked: Solving QBF by Clause Selection: In Proceedings of the 24th International Conference on Artificial... http://bit.ly/1omjDmh
+posted at 09:13:31
+
+
+29
+
+Mitek Bak@mietek
+ @masahiro_sakai @irrequietus and https://github.com/mietek/et-langage. It would be nice to recover the original CPL implementation, as well.Retweeted by Masahiro Sakai
+retweeted at 09:12:44
+
+
+29
+
+Mitek Bak@mietek
+ @masahiro_sakai @irrequietus Yes. I have recovered a number of implementations directly inspired by CPL, including https://github.com/mietek/charitylanguage Retweeted by Masahiro Sakai
+retweeted at 09:11:16
+
+
+29
+
+Masahiro Sakai@masahiro_sakai
+@mietek @irrequietus  Prof. Hagino wrote in his Ph.d thesis in 1987 that "A CPL system has been implemented using Franz Lisp".
+posted at 09:03:45
+
+
+29
+
+Kazunori Sato@kazunori_279
+ #hcj2016 LTTensorFlow http://ow.ly/Y3y8lRetweeted by Masahiro Sakai
+retweeted at 08:41:32
+
+
+29
+
+the grugq@thegrugq
+ The Linux user experience.  https://pic.twitter.com/4QiziEQoMeRetweeted by Masahiro Sakai
+retweeted at 08:40:36
+
+
+
+
+@masahiro_sakai
+
+
+
+<!--
+google_ad_client = "ca-pub-2613098592193304";
+/* Twilog  */
+google_ad_slot = "4924708346";
+google_ad_width = 336;
+google_ad_height = 280;
+google_ad_region = "ad1";
+google_color_link = "116300";
+//-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+last update 02/17 14:14
+
+<!--
+google_ad_client = "ca-pub-2613098592193304";
+/* Twilog 300x250 */
+google_ad_slot = "1706159544";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_region = "ad1";
+//-->
+
+
+
+
+Search
+
+
+
+
+
+
+
+
+
+ AND
+ OR
+
+
+
+
+
+
+
+20162
+
+
+
+
+
+
+1234567
+891011121314
+15161718192021
+22232425262728
+29
+
+1
+
+
+Recent
+
+0217() 4
+0216() 7
+0215() 2
+0214() 3
+0213() 7
+0212() 1
+0211() 13
+0210() 6
+0209() 7
+0208() 4
+
+
+
+
+Archives
+
+2016028920160119420151220320151174201510166201509146201508165201507299201506103201505149201504115201503492015029020150199201412187
+
+ 
+
+
+Friends
+
+@1to100pen159
+@bonotake159
+@mametter95
+@nobsun90
+@kazu_yamamoto86
+@ranha83
+@RunKeeper76
+@maophilia75
+@mr_konn70
+@ikegami__68
+@kinaba57
+@takot56
+@esumii55
+@joshkata55
+@tanakh53
+
+ 
+
+
+Hashtags
+
+#Runkeeper249
+#sereading181
+#icfp130
+#130
+#129
+#nikeplus88
+#ProofSummit77
+#TPP201477
+#fb76
+#Ingress64
+#gohantabeyo40
+#proofsummit201237
+#rubykaigi35
+#concat34
+#hsday33
+
+ 
+
+
+Stats
+Twilog Stats
+
+
+Feed
+RSS feed
+
+
+<!--
+google_ad_client = "ca-pub-2613098592193304";
+/* Twilog 300x250 */
+google_ad_slot = "2430856343";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_region = "ad2";
+google_color_link = "116300";
+//-->
+
+
+
+
+
+
+
+
+
+
+
+
+Twilog
+
+
+
+
+
+
+ 2009-2016 ropross.net.
+Created by @ropross
+
+
+
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+
+
+try {
+var pageTracker = _gat._getTracker("UA-16209355-1");
+pageTracker._trackPageview();
+} catch(err) {}
+
+

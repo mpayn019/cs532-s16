@@ -1,0 +1,922 @@
+
+
+
+
+TechNote by 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.entry-body-text img, .etBody img, .etImage{max-width:100%;-ms-interpolation-mode:bicubic}
+.entry-body-text img[width], .etBody img[width], .etImage[width]{max-width:none}
+.entry-body-image img{max-width:99%}
+.entry-body-image table img, .entry-body-text table img, .etBody table img{max-width:none}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.entry-body-image table img,.entry-body-text table img,.etBody table a img{max-width:none}
+}
+
+
+
+<!--
+var USER_NAME = "shin-ya0215",
+	BID = "c17b11dbdbc0eba744ae95242859fa6c",
+	SERVER_NAME = "blog.goo.ne.jp",
+	IMAGE_SERVER = "blogimg.goo.ne.jp",
+	click_count_id = [],
+	CLICK_CONTROL = 0;
+-->
+
+
+
+dataLayer=[{"_visioparam_p":"usrblog","_visioparam_u1":"blg_free","_visioparam_is_bz":"9","_visioparam_bnr":null,"_visioparam_column":"2","skinid":"64b62ca0d4767a8f9ef902dfb1e16bb9","template":"pc","usertype":"notlogin"}];
+
+ (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NCR8MJ');
+
+//<!--
+document.write('<img src="/ac.php?type=clickcount&id=body_beacon" style="position: absolute;">');
+// -->
+
+
+
+
+
+
+
+
+
+
+
+2,000ptGet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TechNote by 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+cat='blog';
+contents='blogarticle';
+kind='badge300_4';
+site='blog';
+// -->
+
+window.gooad && window.gooad.render();
+				 60
+				
+
+
+
+
+
+<!--
+window.onload = function () {
+};
+// -->
+
+
+
+
+
+
+
+
+
+2010-12-10 00:32:17|MISC
+
+
+
+
+ Blog 5Twitter WinCE 
+http://www.stprec.co.jp/ceblog/author/koga/
+
+
+5
+
+
+
+
+
+
+(1)
+
+
+
+
+
+
+
+
+<!--
+cat='blog';
+contents='blogarticle';
+kind='badge345_2';
+site='blog';
+// -->
+
+window.gooad && window.gooad.render();<!--
+window.onload = function () {
+};
+// -->
+
+
+
+
+
+
+
+
+
+
+
+Windows
+2005-06-12 17:44:57|Kernel land
+
+
+
+
+WindowsNT"The Windows2000 Device Driver Book"errataMicrosoft
+
+WinDDKMSDN subscriptionWin98/Me
+
+
+- 
+- IRP(I/O Request Packet)
+
+
+- 
+
+
+- 
+- filter driverioctl()
+
+WinHEC"Cobra"WindowsWDF(Windows Driver Foundation)"LongHorn"Windows
+
+WDM(Windows Driver Model)filter driver
+
+WDMfilter driverattachIRPPnPWDFfilter driverfilter driver.sysDLL.dll
+
+filter driverpre filterpost filterattachattachfilter driverpost filterWDMattachcompletion routine
+
+WDFPnPWDM
+
+
+
+
+
+
+(20)
+(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fskitDominic Giampaolo
+2005-06-07 22:21:20|Kernel land
+
+
+
+
+Practical File System Design with the Be File System
+
+Dominic Giampaolo"File System Construction Kit"filesystem on fileuser landkernel landuser land
+
+GNOMELinuxuser landLinux
+
+URLhttp://www.mkp.com/giampaolo/fskit.tar.gzMorgan Kaufmann Publishers, Inc.http://www.mkp.com'giampaolo+fskit'googleBeOSMLOpen BeOS"Haiku OS
+
+"Haiku OS"
+
+Dominic GiampaoloBe, Inc.PalmSourceGoogleQNXAppleAppleSpotlight
+
+SGIIRIXXFS"filesystem guy"
+
+Dominic"Practical File System Design with the Be File System"PDF:-)
+
+
+
+
+
+
+(1)
+(203)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Mac OS X
+2005-05-12 18:20:29|
+
+
+
+
+AVIMac OS Xbig endianpredefined macroLinuxWin32
+
+Mac OS XDarwingccpredefined macroApple"Predefined Macros"Mac OS X
+#if defined(__APPLE__) && defined(__MACH__)
+...
+#endif
+
+
+DLL/shared libraryXCodeMakefile&make;developer.apple.comLinux-sharedMac OS X-dynamiclibbig endianMac OS XMakefileMakefile.macosx
+
+DLL/shared library.so.dylibMac OS XELFMac OS XClassic Mac OSPowerPCCFMPEFNeXTStepMach-O"Linkers & Loaders"PEFMach-O;-)
+
+DLL/shared libraryMac OS Xdynamic libraryDYLD_LIBRARY_PATHsetenvAVIbig endian
+
+
+
+
+
+
+
+(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AVI
+2005-05-09 03:36:50|
+
+
+
+
+AVIAVIWMP(Windows Media Player)
+
+AVIWMPAVIGraphEditDirectShowAVISpliterAVIMuxerFileWriterAVIAVIWMPVideoLAN Client
+
+WMPAVI 2.0OpenDMLAVIAVI
+
+16bitPCM4byteOpenDMLindex of index; 'indx'durationtick
+
+AVIWMP
+
+WindowsSDKaviriff.h'movi'512byte
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+monitorsemaphore
+2005-04-29 18:31:56|
+
+
+
+
+JavaJava
+
+C/C++mutexJavamonitorJavamonitor
+
+producer/consumerconsumerproducerJavamonitordequeueenqueuethread safe
+
+producerconsumerconsumer
+
+Javamonitorjava.lang.Object.notify[All]()java.lang.Object.wait()JavamonitorJavamonitor
+
+Javamonitor
+
+C++APIjava.lang.Threadpthreadsconditional variableWin32 APIeventJavasynchronizedmonitorJavamonitor
+
+AppleXCodeObjective-CgccObjective-CJavasyntax sugar
+
+
+
+
+
+
+
+(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Technorati API
+2005-04-04 02:25:40|Web
+
+
+
+
+Technorati JAPANURLBloghttp://www.technorati.jp/search/search.htmlCGI"query"URL
+
+CGI"query"BlogURLBlogBlogBlogBlogHTMLahref'search.html?query=<BlogURL>'
+
+JAPANUS"API"CGIURL"Search query""Cosmos query"CGIgoogleAPIJAPANHTMLUSAPICGIXML
+
+googleAPICGIC++"HttpFetch"URLHTTP GETHTTP responsestd::stringGet()
+
+    HttpFetch    httpClient;
+    std::string  result;
+
+    httpClient.Get(
+        "http://api.technorati.com/cosmos?"  // "Cosmos query"URL
+        "key=<API>"  // API
+        ""&url;=http://www.kuniritsu.com",  // URL
+        &result;);
+
+USAPIXMLDTDAPIAPIXMLBlogJavaC#PHP
+
+APIXMLUTF-8JavaHTTPXMLC/C++TechnoratiAPI
+
+MagicCapTeleScript
+
+MagicCapGeneralMagic2002TeleScriptJava
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2005-04-03 16:16:18|Weblog
+
+
+
+
+WebBlogBlog
+
+pingTechnorati JAPAN(http://rpc.technorati.jp/rpc/ping)Technorati JAPANBlog
+2005-04-03-16:32
+
+2005-04-04-12:1410pingDBXML-RPCURLping
+
+2005-04-07-15:56"TechNote"""X-(
+
+
+http://www.technorati.jp/home.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+|||
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SIM
+
+goo
+goo!!
+2,000pt100
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+goo
+
+
+
+
+good
+
+
+
+
+
+
+
+
+
+
+
+
+2016 
+
+
+
+
+
+
+
+67part-2
+
+
+
+
+
+
+
+
+
+Facebook 
+Twitter 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+20162
+
+
+
+
+
+
+
+
+
+
+ 
+1
+2
+3
+4
+5
+6
+
+
+7
+8
+9
+10
+11
+12
+13
+
+
+14
+15
+16
+17
+18
+19
+20
+
+
+21
+22
+23
+24
+25
+26
+27
+
+
+28
+29
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WindowsfskitDominic GiampaoloMac OS XAVImonitorsemaphoreTechnorati API
+>> 
+
+
+
+
+
+
+
+
+
+
+
+MISC(1)
+Weblog(1)
+(1)
+(1)
+Kernel land(2)
+Web(1)
+(1)
+
+
+
+
+
+
+
+
+
+
+
+
+/
+/Windows
+/Windows
+/Windows
+/Windows
+/Windows
+/Windows
+/Windows
+/Windows
+/Windows
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+()
+
+
+cum suck
+(Unknown)
+
+
+muscle hairy
+(Unknown)
+
+
+Hosting your own web server
+(Hosting your own web server)
+
+
+Internet access business
+(Internet access business)
+
+
+Online pharmacy xanax
+(Online pharmacy xanax)
+
+
+Group medical insurance
+(Group medical insurance)
+
+
+Disability insurance claim
+(Disability insurance claim)
+
+
+San diego under 21
+(San diego under 21)
+
+
+North carolina mutual life insurance
+(North carolina mutual life insurance)
+
+
+
+
+
+
+
+
+
+
+
+
+
+201012
+
+
+200506
+
+
+200505
+
+
+200504
+
+
+
+
+
+
+
+
+
+
+
+
+goo
+goo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{lang: 'ja'}
+//<!--
+$(document).ready(function(){
+	$gbQuery(this).follow({
+		show_counter: true
+	});
+
+
+
+});
+//-->
+
+VLTrace_custom_getparam='c=147&p=usrblog&u1=blg_free&is_bz=9&bnr=&column=2';document.write('<img src="/ac.php?type=clickcount&r=45&id=afcbeacon_aff" style="display:none">');
+
